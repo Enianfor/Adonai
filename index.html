@@ -22,6 +22,94 @@
     <script src="./js/basico.js"></script>
     <script src="./js/conexion.js"></script>
 
+    <h1>Mensajes de Consola</h1>
+    <div id="consoleOutput"></div>
+
+    <script>
+        // Capturar mensajes de la consola
+        const outputDiv = document.getElementById('consoleOutput');
+
+        function printMessage(message, type) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            if (type === 'error') {
+                messageElement.classList.add('error');
+            } else if (type === 'warning') {
+                messageElement.classList.add('warning');
+            }
+            outputDiv.appendChild(messageElement);
+            outputDiv.scrollTop = outputDiv.scrollHeight; // Desplazar hacia abajo
+        }
+
+        // Redefinir console.log
+        const originalConsoleLog = console.log;
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            printMessage(args.join(' '), 'log');
+        };
+
+        // Redefinir console.error
+        const originalConsoleError = console.error;
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            printMessage(args.join(' '), 'error');
+        };
+
+        // Redefinir console.warn
+        const originalConsoleWarn = console.warn;
+        console.warn = function(...args) {
+            originalConsoleWarn.apply(console, args);
+            printMessage(args.join(' '), 'warning');
+        };
+
+        // Función para manejar solicitudes GET
+        async function fetchData(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error(`Error en la solicitud GET: ${error.message}`);
+            }
+        }
+
+        // Función para manejar solicitudes POST
+        async function postData(url, data) {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log(result);
+            } catch (error) {
+                console.error(`Error en la solicitud POST: ${error.message}`);
+            }
+        }
+
+        // Ejemplo de uso de las funciones
+        fetchData('http://192.168.0.13:8080/registrar-producto');
+
+        // Ejemplo de datos a enviar en un POST
+        const dataToPost = {
+            nombre: 'Producto 1',
+            precio: 100
+        };
+        
+        postData('http://192.168.0.13:8080/registrar-producto', dataToPost);
+    </script>
+
 </body>
 
 </html>
