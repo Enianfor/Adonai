@@ -9,8 +9,7 @@
 </head>
 
 <body>
-    <h1>Mensajes de Consola</h1>
-    <div id="consoleOutput"></div>
+
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-sm-4 shadow p-3">
@@ -21,55 +20,6 @@
     <script src="./js/scanapp.min.js"></script>
     <script src="./js/basico.js"></script>
     <script src="./js/conexion.js"></script>
-    <script>
-        
-        // Capturar mensajes de la consola
-        const outputDiv = document.getElementById('consoleOutput');
-
-        function printMessage(message, type) {
-            const messageElement = document.createElement('div');
-            messageElement.textContent = message;
-            if (type === 'error') {
-                messageElement.classList.add('error');
-            } else if (type === 'warning') {
-                messageElement.classList.add('warning');
-            }
-            outputDiv.appendChild(messageElement);
-            outputDiv.scrollTop = outputDiv.scrollHeight; // Desplazar hacia abajo
-        }
-
-        // Redefinir console.log
-        const originalConsoleLog = console.log;
-        console.log = function(...args) {
-            originalConsoleLog.apply(console, args);
-            printMessage(args.join(' '), 'log');
-        };
-
-        // Redefinir console.error
-        const originalConsoleError = console.error;
-        console.error = function(...args) {
-            originalConsoleError.apply(console, args);
-            printMessage(args.join(' '), 'error');
-        };
-
-        // Redefinir console.warn
-        const originalConsoleWarn = console.warn;
-        console.warn = function(...args) {
-            originalConsoleWarn.apply(console, args);
-            printMessage(args.join(' '), 'warning');
-        };
-
-        // Ejemplo de mensajes
-        console.log('¡Bienvenido a la consola en la página!');
-        console.log('Este es un mensaje de prueba.');
-        console.error('Este es un mensaje de error.');
-        console.warn('Este es un mensaje de advertencia.');
-    </script>
-
-    
-
-    
-
 </body>
 
 </html>
