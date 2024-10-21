@@ -11,7 +11,18 @@
 <body>
     <h1>Mensajes de Consola</h1>
     <div id="consoleOutput"></div>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-sm-4 shadow p-3">
+                <div id="reader" width="600px"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/scanapp.min.js"></script>
+    <script src="./js/basico.js"></script>
+    <script src="./js/conexion.js"></script>
     <script>
+        
         // Capturar mensajes de la consola
         const outputDiv = document.getElementById('consoleOutput');
 
@@ -55,17 +66,9 @@
         console.warn('Este es un mensaje de advertencia.');
     </script>
 
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-sm-4 shadow p-3">
-                <div id="reader" width="600px"></div>
-            </div>
-        </div>
-    </div>
+    
 
-    <script src="./js/scanapp.min.js"></script>
-    <script src="./js/basico.js"></script>
-    <script src="./js/conexion.js"></script>
+    
 
 </body>
 
