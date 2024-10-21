@@ -1,54 +1,66 @@
 function APIvalidarCodigoBarras(codigoBarras) {
-    fetch("http://192.168.0.13:8080/validar-codigo-barras", {
-        method: "post",
-        headers: {
-            "content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            codigoBarras: codigoBarras
+    try {
+        fetch("http://192.168.0.13:8080/validar-codigo-barras", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                codigoBarras: codigoBarras
+            })
         })
-    })
-    .then((res) => {
-        // Verificar si la respuesta es exitosa (código 200-299)
-        if (res.ok) {
-            // Accedemos al texto que nos envia el servidor
-            res.text()
-                .then((data) => {
-                    // Maneja la respuesta aquí
-                    console.log("Respuesta del servidor:", data);
-                })
-        }
-    })
-        
+        .then((res) => {
+            // Verificar si la respuesta es exitosa (código 200-299)
+            if (res.ok) {
+                return res.text();
+            } else {
+                throw new Error(`Error en la respuesta del servidor: ${res.status}`);
+            }
+        })
+        .then((data) => {
+            // Maneja la respuesta aquí
+            console.log("Respuesta del servidor:", data);
+        })
+        .catch((error) => {
+            console.error("Error en la solicitud:", error);
+        });
+    } catch (error) {
+        console.error("Error en la función APIvalidarCodigoBarras:", error);
+    }
 }
-
 
 function APIenviarNumero(usuario, contraseña, codigoBarras) {
-    console.log("Se acaba de enviar datos")
-    fetch(`http://192.168.0.13:8080/registrar-producto`, {
-        method: "post",
-        headers: {
-            "content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            usuario: usuario,
-            contraseña: contraseña,
-            codigoBarras: codigoBarras
+    console.log("Se acaba de enviar datos");
+    try {
+        fetch(`http://192.168.0.13:8080/registrar-producto`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuario: usuario,
+                contraseña: contraseña,
+                codigoBarras: codigoBarras
+            })
         })
-    })
-    .then((res) => {
-        // Verificar si la respuesta es exitosa (código 200-299)
-        if (res.ok) {
-            // Accedemos al texto que nos envia el servidor
-            res.text()
-                .then((data) => {
-                    // Maneja la respuesta aquí
-                    console.log("Respuesta del servidor:", data);
-                })
-        }
-    })
-
+        .then((res) => {
+            // Verificar si la respuesta es exitosa (código 200-299)
+            if (res.ok) {
+                return res.text();
+            } else {
+                throw new Error(`Error en la respuesta del servidor: ${res.status}`);
+            }
+        })
+        .then((data) => {
+            // Maneja la respuesta aquí
+            console.log("Respuesta del servidor:", data);
+        })
+        .catch((error) => {
+            console.error("Error en la solicitud:", error);
+        });
+    } catch (error) {
+        console.error("Error en la función APIenviarNumero:", error);
+    }
 }
-
 APIenviarNumero("drako", "1234", 4444);
 APIvalidarCodigoBarras(789798);
