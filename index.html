@@ -9,6 +9,30 @@
 </head>
 
 <body>
+    <h1>Mensajes de Consola</h1>
+    <div id="consoleOutput"></div>
+    <script>
+        // Capturar mensajes de la consola
+        const originalConsoleLog = console.log;
+        const outputDiv = document.getElementById('consoleOutput');
+
+        console.log = function(...args) {
+            // Llama al método original
+            originalConsoleLog.apply(console, args);
+            // Convierte los argumentos a una cadena
+            const message = args.join(' ');
+            // Muestra el mensaje en el div
+            outputDiv.textContent += message + '\n';
+            // Desplaza hacia abajo para ver el último mensaje
+            outputDiv.scrollTop = outputDiv.scrollHeight;
+        };
+
+        // Ejemplo de mensajes
+        console.log('¡Bienvenido a la consola en la página!');
+        console.log('Este es un mensaje de prueba.');
+        console.error('Este es un mensaje de error.');
+        console.warn('Este es un mensaje de advertencia.');
+    </script>
 
     <div class="container">
         <div class="row justify-content-center mt-5">
