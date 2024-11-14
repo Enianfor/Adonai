@@ -4,6 +4,7 @@ function lecturaCorrecta(codigoTexto, codigoObjeto) {
   // codigo texto es para lo que llego a leer
   Swal.fire(codigoTexto);
   APIvalidarCodigoBarras(1234);
+  APIvalidarCodigoBarras(codigoTexto);
 }
 
 function errorLectura(error) {
