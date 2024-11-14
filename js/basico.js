@@ -3,6 +3,7 @@ function lecturaCorrecta(codigoTexto, codigoObjeto) {
   console.log(`Code matched = ${codigoTexto}`, codigoObjeto);
   // codigo texto es para lo que llego a leer
   Swal.fire(codigoTexto);
+  APIvalidarCodigoBarras(1234);
 }
 
 function errorLectura(error) {

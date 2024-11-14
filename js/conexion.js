@@ -62,5 +62,3 @@ function APIenviarNumero(usuario, contraseña, codigoBarras) {
         console.error("Error en la función APIenviarNumero:", error);
     }
 }
-APIenviarNumero("drako", "1234", 4444);
-APIvalidarCodigoBarras(789798);
