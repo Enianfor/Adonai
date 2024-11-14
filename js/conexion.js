@@ -63,4 +63,4 @@ function APIenviarNumero(usuario, contraseña, codigoBarras) {
     }
 }
 
-APIenviarNumero(123);
+APIvalidarCodigoBarras(123);
