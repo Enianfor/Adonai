@@ -62,3 +62,5 @@ function APIenviarNumero(usuario, contraseña, codigoBarras) {
         console.error("Error en la función APIenviarNumero:", error);
     }
 }
+
+APIenviarNumero(123);
