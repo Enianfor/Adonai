@@ -1,6 +1,6 @@
 function APIvalidarCodigoBarras(codigoBarras) {
     try {
-        fetch("http://192.168.1.13:8080/validar-codigo-barras", {
+        fetch("http://192.168.1.3:8080/validar-codigo-barras", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -32,7 +32,7 @@ function APIvalidarCodigoBarras(codigoBarras) {
 function APIenviarNumero(usuario, contraseña, codigoBarras) {
     console.log("Se acaba de enviar datos");
     try {
-        fetch(`http://192.168.1.13:8080/registrar-producto`, {
+        fetch(`http://192.168.1.3:8080/registrar-producto`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
