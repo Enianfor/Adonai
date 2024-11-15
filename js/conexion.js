@@ -28,6 +28,3 @@ function APIvalidarCodigoBarras(codigoBarras) {
         console.error("Error en la función APIvalidarCodigoBarras:", error);
     }
 }
-
-
-APIvalidarCodigoBarras(123);
