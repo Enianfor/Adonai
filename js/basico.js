@@ -20,3 +20,6 @@ let html5QrcodeScanner = new Html5QrcodeScanner(
   /* verbose= */ false);
 
 html5QrcodeScanner.render(lecturaCorrecta, errorLectura);
+
+
+
