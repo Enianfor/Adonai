@@ -1,6 +1,6 @@
 function APIvalidarCodigoBarras(codigoBarras) {
     try {
-        fetch("http://192.168.1.3:8080/validar-codigo-barras", {
+        fetch("http://192.168.0.103:8080/validar-codigo-barras", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
