@@ -48,28 +48,6 @@
         </div>
     </div>
 
-    <label for="input"></label>    
-    <div class="container">        
-        <!-- Botón "Pegar" -->
-        <button onclick="pegarDelPortapapeles()">Enviar al servidor Atlas</button>
-    </div>
-    <script>
-        function pegarDelPortapapeles() {
-            // Verificar si el navegador soporta la API Clipboard
-            if (navigator.clipboard) {
-                // Usar la API Clipboard para obtener el contenido del portapapeles
-                navigator.clipboard.readText()
-                    .then(text => {
-                        APIvalidarCodigoBarras(text);
-                        Swal.fire(text);
-                    })                    
-            } else {
-                console.warn('Tu navegador no soporta la API Clipboard.');
-                alert('Tu navegador no soporta la API de portapapeles.');
-            }
-        }
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
