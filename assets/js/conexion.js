@@ -1,6 +1,6 @@
 function APIvalidarCodigoBarras(codigoBarras) {
     try {
-        fetch("http://192.168.0.103:8080/validar-codigo-barras", {
+        fetch("http://192.168.1.3:8080/validar-codigo-barras", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -14,6 +14,7 @@ function APIvalidarCodigoBarras(codigoBarras) {
             if (res.ok) {
                 return res.text();
             } else {
+                
                 throw new Error(`Error en la respuesta del servidor: ${res.status}`);
             }
         })
@@ -26,5 +27,6 @@ function APIvalidarCodigoBarras(codigoBarras) {
         });
     } catch (error) {
         console.error("Error en la función APIvalidarCodigoBarras:", error);
-    }
-}
+    }}
+
+    APIvalidarCodigoBarras(123456789)
